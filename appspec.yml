@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /home/my-temp-dir
+    overwrite: true
+    fileExistsBehavior: OVERWRITE
+
+permissions:
+  - object: /home/my-temp-dir
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  AfterInstall:
+    - location: scripts/integrations-deploy-post.sh
+      runas: root
